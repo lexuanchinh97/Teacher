@@ -1,7 +1,9 @@
-package com.vn.teacher;
+package com.teacher.vn.authentication;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.teacher.vn.R;
 
 public class SignupActivity extends AppCompatActivity {
 

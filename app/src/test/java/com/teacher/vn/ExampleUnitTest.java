@@ -1,4 +1,4 @@
-package com.vn.teacher;
+package com.teacher.vn;
 
 import org.junit.Test;
 
