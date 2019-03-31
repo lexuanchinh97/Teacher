@@ -48,9 +48,9 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         loadFragment(new HomeFragment());
-        loadFragment(new PostFragment());
-        loadFragment(new SaveFragment());
-        loadFragment(new ProfileFragment());
+//        loadFragment(new PostFragment());
+//        loadFragment(new SaveFragment());
+//        loadFragment(new ProfileFragment());
     }
     private void loadFragment(Fragment fragment) {
         // load fragment
