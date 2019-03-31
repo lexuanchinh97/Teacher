@@ -59,7 +59,7 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.ViewHold
         ImageView img_avatar;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            txt_name=itemView.findViewById(R.id.txt_name);
+            txt_name=itemView.findViewById(R.id.uuuu);
             txt_address=itemView.findViewById(R.id.txt_address);
             txt_salary=itemView.findViewById(R.id.txt_salary);
             txt_job=itemView.findViewById(R.id.txt_job);

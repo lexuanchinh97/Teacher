@@ -40,7 +40,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/txt_name"
+            android:id="@+id/uuuu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -62,7 +62,7 @@
             android:text="tphcm"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView4"
-            app:layout_constraintTop_toBottomOf="@+id/txt_name" />
+            app:layout_constraintTop_toBottomOf="@+id/uuuu" />
 
         <TextView
             android:id="@+id/txt_salary"
@@ -105,7 +105,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toEndOf="@+id/img_avatar"
-            app:layout_constraintTop_toBottomOf="@+id/txt_name"
+            app:layout_constraintTop_toBottomOf="@+id/uuuu"
             app:srcCompat="@drawable/ic_address" />
 
         <ImageView

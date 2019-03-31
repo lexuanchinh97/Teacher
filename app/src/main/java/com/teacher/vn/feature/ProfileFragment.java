@@ -1,4 +1,4 @@
-package com.teacher.vn;
+package com.teacher.vn.feature;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,7 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.teacher.vn.R;
 import com.teacher.vn.config.CallApi;
 import com.teacher.vn.model.Customer;
 import com.teacher.vn.model.ProfileCustomer;

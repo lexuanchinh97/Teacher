@@ -9,6 +9,11 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import com.teacher.vn.feature.HomeFragment;
+import com.teacher.vn.feature.PostFragment;
+import com.teacher.vn.feature.ProfileFragment;
+import com.teacher.vn.feature.SaveFragment;
+
 public class MainActivity extends AppCompatActivity {
 
     private ActionBar toolbar;

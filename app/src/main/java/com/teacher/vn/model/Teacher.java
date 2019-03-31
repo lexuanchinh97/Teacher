@@ -14,6 +14,8 @@ public class Teacher {
     private Integer salary;
     private Integer status;
     private String university;
+    private Integer number;
+    private String time;
     private District district;
     private List<Subject> subjects = null;
     private List<ClassMate> classMate = null;
@@ -106,6 +108,22 @@ public class Teacher {
         this.university = university;
     }
 
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
     public District getDistrict() {
         return district;
     }
@@ -129,4 +147,5 @@ public class Teacher {
     public void setClassMate(List<ClassMate> classMate) {
         this.classMate = classMate;
     }
+
 }
