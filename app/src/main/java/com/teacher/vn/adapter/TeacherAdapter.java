@@ -45,7 +45,7 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.ViewHold
             viewHolder.txt_name.setText(teacher.getName());
             viewHolder.txt_address.setText(teacher.getAddress());
             viewHolder.txt_job.setText(teacher.getJob());
-            viewHolder.txt_salary.setText(teacher.getSalary().toString());
+            viewHolder.txt_salary.setText(teacher.getSalary().toString()+" VND/H");
         }
     }
 
@@ -54,7 +54,7 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.ViewHold
         return data.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView txt_name,txt_address,txt_salary,txt_job;
         ImageView img_avatar;
         public ViewHolder(@NonNull View itemView) {
@@ -64,6 +64,12 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.ViewHold
             txt_salary=itemView.findViewById(R.id.txt_salary);
             txt_job=itemView.findViewById(R.id.txt_job);
             img_avatar=itemView.findViewById(R.id.img_avatar);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            listener.onItemClick(data.get(getAdapterPosition()));
         }
     }
     public interface IClickListener {

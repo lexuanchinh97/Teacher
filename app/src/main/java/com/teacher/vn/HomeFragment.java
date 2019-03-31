@@ -1,5 +1,6 @@
 package com.teacher.vn;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -70,6 +71,14 @@ public class HomeFragment extends Fragment {
         rv_teacher.setLayoutManager(mLayoutManager);
         adapter=new TeacherAdapter(getActivity());
         adapter.setData(teachers);
+        adapter.setListener(new TeacherAdapter.IClickListener() {
+            @Override
+            public void onItemClick(Teacher teacher) {
+                Intent intent=new Intent(getActivity(),TeacherDetailActivity.class);
+                intent.putExtra("id",teacher.getId());
+                startActivity(intent);
+            }
+        });
         this.rv_teacher.setAdapter(adapter);
     }
 }
