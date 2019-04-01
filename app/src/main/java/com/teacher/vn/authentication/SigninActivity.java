@@ -21,9 +21,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SigninActivity extends AppCompatActivity {
-    Button btn_sign_in;
-    TextView tv_sign_up;
-    EditText edt_username,edt_password;
+    private Button btn_sign_in;
+    private TextView tv_sign_up;
+    private EditText edt_username,edt_password;
     ResponseSignin responseSignin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

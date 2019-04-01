@@ -14,9 +14,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TeacherDetailActivity extends AppCompatActivity {
-    TextView txt_name,txt_gender,txt_university,txt_job,txt_address;
-    TextView txt_class,txt_subject,txt_district,txt_time,txt_number;
-    Teacher teacher;
+    private TextView txt_name,txt_gender,txt_university,txt_job,txt_address;
+    private TextView txt_class,txt_subject,txt_district,txt_time,txt_number;
+    private Teacher teacher;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,8 +44,24 @@ public class TeacherDetailActivity extends AppCompatActivity {
         CallApi.getInstance().findOneTeacher(id).enqueue(new Callback<Teacher>() {
             @Override
             public void onResponse(Call<Teacher> call, Response<Teacher> response) {
+                String listSubject="";
+                String listClass="";
                 if(response.body()!=null){
+
                     teacher=response.body();
+                    for(int i=0;i<teacher.getSubjects().size();i++){
+                        if(i+1!=teacher.getSubjects().size()){
+                            listSubject+=teacher.getSubjects().get(i).getName()+", ";
+                        }else listSubject+=teacher.getSubjects().get(i).getName();
+
+                    }
+                    for(int i=0;i<teacher.getClassMate().size();i++){
+                        if(i+1!=teacher.getClassMate().size()){
+                            listClass+=teacher.getClassMate().get(i).getName()+", ";
+                        }else listClass+=teacher.getClassMate().get(i).getName();
+                    }
+                    txt_subject.setText(listSubject);
+                    txt_class.setText(listClass);
                     txt_name.setText(teacher.getName());
                     if(teacher.getGender()==1){
                         txt_gender.setText("Nam");
@@ -55,6 +71,7 @@ public class TeacherDetailActivity extends AppCompatActivity {
                     txt_address.setText(teacher.getAddress());
                     txt_time.setText(teacher.getTime());
                     txt_number.setText(teacher.getNumber().toString());
+                    txt_district.setText(teacher.getDistrict().getName());
                 }
             }
 

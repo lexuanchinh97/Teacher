@@ -5,11 +5,18 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.teacher.vn.R;
 import com.teacher.vn.adapter.TeacherAdapter;
@@ -25,17 +32,31 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
-    RecyclerView rv_teacher;
-    TeacherAdapter adapter;
-    List<Teacher> teachers;
-    int subjectId=-1;
-    int districtId=-1;
-    int gender=-1;
-    int classId=-1;
+    private RecyclerView rv_teacher;
+    private TeacherAdapter adapter;
+    private List<Teacher> teachers;
+    private int subjectId=-1;
+    private int districtId=-1;
+    private int gender=-1;
+    private int classId=-1;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
+        Bundle bundle = this.getArguments();
+
+        if(bundle!=null){
+            classId = bundle.getInt("classId");
+            subjectId = bundle.getInt("subjectId");
+            districtId = bundle.getInt("districtId");
+            gender = bundle.getInt("gender");
+
+        }
+
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.setSupportActionBar(toolbar);
+        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         rv_teacher=view.findViewById(R.id.rv_teacher);
         callApi(subjectId, districtId, gender, classId);
         if(teachers == null) {
@@ -46,6 +67,7 @@ public class HomeFragment extends Fragment {
             //there is already data? screen must be rotating or tab switching
             adapter.setData(teachers);
         }
+
         return view;
     }
 

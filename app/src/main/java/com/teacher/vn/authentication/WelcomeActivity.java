@@ -10,7 +10,7 @@ import com.github.ybq.android.spinkit.style.ThreeBounce;
 import com.teacher.vn.R;
 
 public class WelcomeActivity extends AppCompatActivity {
-    ProgressBar progressBar;
+    private ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
