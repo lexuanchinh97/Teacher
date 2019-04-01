@@ -81,6 +81,10 @@ public class MainActivity extends AppCompatActivity {
             data.putInt("districtId",districtId);
             data.putInt("gender",gender);
             fragment.setArguments(data);
+            classId=-1;
+            subjectId=-1;
+            districtId=-1;
+            gender=-1;
         }
 
         transaction.replace(R.id.frame_container, fragment);

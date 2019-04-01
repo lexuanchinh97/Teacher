@@ -27,4 +27,7 @@ public interface LinkApi {
     @GET("docs/teachers/{id}")
     Call<Teacher> findOneTeacher(@Path("id") int id);
 
+    @GET("docs/teachers/get-post")
+    Call<TeacherResponse> getPost(@Query("username") String username);
+
 }

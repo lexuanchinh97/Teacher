@@ -78,6 +78,7 @@ public class SigninActivity extends AppCompatActivity {
         SharedPreferences.Editor editor=preferences.edit();
         if(responseSignin!=null) {
             editor.putString("token", responseSignin.getResult().getToken());
+            editor.putString("username", responseSignin.getResult().getUsername());
         }else editor.putString("token","");
         editor.commit();
         //  Toast.makeText(this, responseSignin.getResult().getToken(), Toast.LENGTH_SHORT).show();

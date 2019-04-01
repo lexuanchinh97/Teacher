@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -39,11 +40,13 @@ public class HomeFragment extends Fragment {
     private int districtId=-1;
     private int gender=-1;
     private int classId=-1;
+    private SwipeRefreshLayout swipeContainer;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
+        swipeContainer=view.findViewById(R.id.swipeContainer);
         Bundle bundle = this.getArguments();
 
         if(bundle!=null){
@@ -67,7 +70,17 @@ public class HomeFragment extends Fragment {
             //there is already data? screen must be rotating or tab switching
             adapter.setData(teachers);
         }
-
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeContainer.setRefreshing(false);
+                callApi(-1, -1, -1, -1);
+            }
+        });
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
         return view;
     }
 
