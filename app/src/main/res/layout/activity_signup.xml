@@ -102,13 +102,13 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/edt_password"
+                    android:id="@+id/edt_address"
                     style="@style/body1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:hint="password"
-                    android:inputType="textPassword"
+                    android:hint="address"
+                    android:inputType="text"
                     android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>

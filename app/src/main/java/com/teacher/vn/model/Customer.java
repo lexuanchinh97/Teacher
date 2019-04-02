@@ -6,6 +6,7 @@ public class Customer {
     private String email;
     private String phone;
     private String username;
+    private String password;
 
     public Integer getId() {
         return id;
@@ -48,4 +49,11 @@ public class Customer {
         this.username = username;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

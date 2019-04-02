@@ -1,5 +1,7 @@
 package com.teacher.vn.config;
 
+import com.teacher.vn.model.BaseResponse;
+import com.teacher.vn.model.Customer;
 import com.teacher.vn.model.CustomerPost;
 import com.teacher.vn.model.CustomerPostResponse;
 import com.teacher.vn.model.ProfileCustomer;
@@ -19,6 +21,9 @@ import retrofit2.http.Query;
 public interface LinkApi {
     @POST("customers/signin")
     Call<ResponseSignin> signin(@Body SigninCustomer loginUser);
+
+    @POST("customers/signup")
+    Call<BaseResponse> signup(@Body Customer customer);
 
     @GET("docs/teachers/search")
     Call<TeacherResponse> search(@Query("subjectId") int subjectId
