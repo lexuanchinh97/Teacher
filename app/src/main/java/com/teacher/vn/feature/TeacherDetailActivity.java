@@ -3,7 +3,6 @@ package com.teacher.vn.feature;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.teacher.vn.R;
 import com.teacher.vn.config.CallApi;
@@ -21,10 +20,10 @@ public class TeacherDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher_detail);
-        txt_name=findViewById(R.id.txt_name);
+        txt_name=findViewById(R.id.edt_name);
         txt_gender=findViewById(R.id.txt_gender);
         txt_university=findViewById(R.id.txt_university);
-        txt_job=findViewById(R.id.txt_job);
+        txt_job=findViewById(R.id.edt_job);
         txt_address=findViewById(R.id.txt_address);
         txt_class=findViewById(R.id.txt_class);
         txt_subject=findViewById(R.id.txt_subject);

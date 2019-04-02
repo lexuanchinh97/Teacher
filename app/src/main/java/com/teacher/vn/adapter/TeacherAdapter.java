@@ -62,7 +62,7 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.ViewHold
             txt_name=itemView.findViewById(R.id.uuuu);
             txt_address=itemView.findViewById(R.id.txt_address);
             txt_salary=itemView.findViewById(R.id.txt_salary);
-            txt_job=itemView.findViewById(R.id.txt_job);
+            txt_job=itemView.findViewById(R.id.edt_job);
             img_avatar=itemView.findViewById(R.id.img_avatar);
             itemView.setOnClickListener(this);
         }

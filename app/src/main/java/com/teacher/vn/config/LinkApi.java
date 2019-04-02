@@ -1,5 +1,7 @@
 package com.teacher.vn.config;
 
+import com.teacher.vn.model.CustomerPost;
+import com.teacher.vn.model.CustomerPostResponse;
 import com.teacher.vn.model.ProfileCustomer;
 import com.teacher.vn.model.ResponseSignin;
 import com.teacher.vn.model.SigninCustomer;
@@ -29,5 +31,8 @@ public interface LinkApi {
 
     @GET("docs/teachers/get-post")
     Call<TeacherResponse> getPost(@Query("username") String username);
+    @POST("docs/teachers/create")
+    Call<CustomerPostResponse> customerPost(@Body CustomerPost request);
+
 
 }
