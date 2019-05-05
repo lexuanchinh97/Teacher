@@ -1,6 +1,7 @@
 package com.teacher.vn.config;
 
 import com.teacher.vn.model.BaseResponse;
+import com.teacher.vn.model.ChangePassword;
 import com.teacher.vn.model.Customer;
 import com.teacher.vn.model.CustomerPost;
 import com.teacher.vn.model.CustomerPostResponse;
@@ -36,8 +37,11 @@ public interface LinkApi {
 
     @GET("docs/teachers/get-post")
     Call<TeacherResponse> getPost(@Query("username") String username);
+
     @POST("docs/teachers/create")
     Call<CustomerPostResponse> customerPost(@Body CustomerPost request);
 
+    @POST("customers/change-password")
+    Call<BaseResponse> changePassword(@Header("Authorization") String token, @Body ChangePassword changePassword);
 
 }

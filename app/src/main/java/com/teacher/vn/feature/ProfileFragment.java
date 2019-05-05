@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.teacher.vn.R;
+import com.teacher.vn.authentication.ChangePasswordActivity;
 import com.teacher.vn.authentication.SigninActivity;
 import com.teacher.vn.config.CallApi;
 import com.teacher.vn.model.Customer;
@@ -26,7 +27,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class ProfileFragment extends Fragment {
     Customer customer;
-    ConstraintLayout logout;
+    ConstraintLayout logout,changePassword;
     TextView txt_username,txt_phone,txt_address,txt_email;
     @Nullable
     @Override
@@ -37,9 +38,20 @@ public class ProfileFragment extends Fragment {
         txt_phone=view.findViewById(R.id.edt_phone);
         txt_email=view.findViewById(R.id.edt_email);
         logout=view.findViewById(R.id.logout);
+        changePassword=view.findViewById(R.id.changePassword);
+        changePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ChangePasswordActivity.class));
+            }
+        });
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences preferences=getActivity().getSharedPreferences("token",MODE_PRIVATE);
+                SharedPreferences.Editor editor=preferences.edit();
+                editor.putString("token","");
+                editor.commit();
                 startActivity(new Intent(getActivity(), SigninActivity.class));
             }
         });

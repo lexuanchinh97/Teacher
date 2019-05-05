@@ -24,9 +24,10 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_main" />
         <activity android:name=".feature.TeacherDetailActivity" />
-        <activity android:name=".feature.FilterActivity"
-            android:theme="@style/Base.Theme.AppCompat.Light.Dialog.FixedSize">
-        </activity>
+        <activity
+            android:name=".feature.FilterActivity"
+            android:theme="@style/Base.Theme.AppCompat.Light.Dialog.FixedSize"></activity>
+        <activity android:name=".authentication.ChangePasswordActivity"></activity>
     </application>
 
 </manifest>
