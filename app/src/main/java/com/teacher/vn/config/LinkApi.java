@@ -28,7 +28,7 @@ public interface LinkApi {
 
     @GET("docs/teachers/search")
     Call<TeacherResponse> search(@Query("subjectId") int subjectId
-            ,@Query("subjectId") int districtId, @Query("gender") int gender,@Query("classId") int classId);
+            ,@Query("districtId") int districtId, @Query("gender") int gender,@Query("classId") int classId);
     @GET("customers/profile")
     Call<ProfileCustomer> profile(@Header("Authorization") String token);
 

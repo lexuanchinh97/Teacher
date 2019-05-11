@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.teacher.vn">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -25,8 +26,7 @@
             android:label="@string/title_activity_main" />
         <activity android:name=".feature.TeacherDetailActivity" />
         <activity
-            android:name=".feature.FilterActivity"
-            android:theme="@style/Base.Theme.AppCompat.Light.Dialog.FixedSize"></activity>
+            android:name=".feature.FilterActivity"></activity>
         <activity android:name=".authentication.ChangePasswordActivity"></activity>
     </application>
 

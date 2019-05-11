@@ -11,12 +11,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.teacher.vn.feature.FilterActivity;
 import com.teacher.vn.feature.HomeFragment;
 import com.teacher.vn.feature.PostFragment;
 import com.teacher.vn.feature.ProfileFragment;
 import com.teacher.vn.feature.SaveFragment;
+import com.teacher.vn.utils.CheckInternet;
 
 public class MainActivity extends AppCompatActivity {
     int check=0;
@@ -66,6 +68,9 @@ public class MainActivity extends AppCompatActivity {
             districtId = extras.getInt("districtId");
             gender = extras.getInt("gender");
         }
+//        if(CheckInternet.isNetworkAvailable(MainActivity.this)){
+//            Toast.makeText(this, "connect", Toast.LENGTH_SHORT).show();
+//        }else Toast.makeText(this, "disconnect", Toast.LENGTH_SHORT).show();
         toolbar = getSupportActionBar();
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
