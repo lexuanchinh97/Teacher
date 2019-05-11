@@ -1,7 +1,12 @@
 package com.teacher.vn.feature;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.teacher.vn.R;
@@ -16,6 +21,8 @@ public class TeacherDetailActivity extends AppCompatActivity {
     private TextView txt_name,txt_gender,txt_university,txt_job,txt_address;
     private TextView txt_class,txt_subject,txt_district,txt_time,txt_number;
     private Teacher teacher;
+    private Button btn_phone;
+    private String phone="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +37,14 @@ public class TeacherDetailActivity extends AppCompatActivity {
         txt_district=findViewById(R.id.txt_district);
         txt_time=findViewById(R.id.txt_time);
         txt_number=findViewById(R.id.txt_number);
+        btn_phone=findViewById(R.id.btn_phone);
+        btn_phone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
+                startActivity(intent);
+            }
+        });
         int id=1;
         Bundle extras = getIntent().getExtras();
 
@@ -71,6 +86,7 @@ public class TeacherDetailActivity extends AppCompatActivity {
                     txt_time.setText(teacher.getTime());
                     txt_number.setText(teacher.getNumber().toString());
                     txt_district.setText(teacher.getDistrict().getName());
+                    phone=teacher.getPhone();
                 }
             }
 
