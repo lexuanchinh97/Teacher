@@ -2,41 +2,62 @@ package com.teacher.vn.authentication;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.github.ybq.android.spinkit.style.ThreeBounce;
 import com.teacher.vn.MainActivity;
 import com.teacher.vn.R;
+import com.teacher.vn.adapter.SliderAdapter;
 
 public class WelcomeActivity extends AppCompatActivity {
-    private ProgressBar progressBar;
+
+    private SliderAdapter sliderAdapter;
+    private WrapContentViewPager mMsgSelectionPager;
+    private TabLayout tabLayout;
+    private Button btnLogin;
+    private Button btnSignup;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-        progressBar=findViewById(R.id.spin_kit);
-        ThreeBounce threeBounce=new ThreeBounce();
-        progressBar.setIndeterminateDrawable(threeBounce);
-        final Thread thread=new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(2000);
-                    progressBar.setVisibility(View.INVISIBLE);
-                }catch (Exception e){
 
-                }finally {
-                    SharedPreferences preferences=getSharedPreferences("token",MODE_PRIVATE);
-                    String token=preferences.getString("token","");
-                    if(token!=null&& !token.isEmpty()){
-                        startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
-                    }else startActivity(new Intent(WelcomeActivity.this,SigninActivity.class));
-                }
-            }
-        });
-        thread.start();
+        mapping();
+        sliderAdapter = new SliderAdapter(this);
+
+
+        mMsgSelectionPager.setAdapter(sliderAdapter);
+        tabLayout.setupWithViewPager(mMsgSelectionPager, true);
+
     }
+
+    public void mapping(){
+        mMsgSelectionPager = (WrapContentViewPager) findViewById(R.id.slideViewPaper);
+        tabLayout = (TabLayout) findViewById(R.id.dotsLayout);
+    }
+
+    WrapContentViewPager.OnPageChangeListener viewListener = new WrapContentViewPager.OnPageChangeListener() {
+        @Override
+        public void onPageScrolled(int i, float v, int i1) {
+
+        }
+
+        @Override
+        public void onPageSelected(int i) {
+            // addDotsIndicator(i);
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int i) {
+
+        }
+    };
+
 }
