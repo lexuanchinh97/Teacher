@@ -4,4 +4,20 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Post</string>
     <string name="title_notifications">Account</string>
+
+
+
+    <string name="dangnhap">ĐĂNG NHẬP</string>
+    <string name="dangky">ĐĂNG KÝ</string>
+
+    <string name="tiengviet">Tiếng Việt</string>
+
+    <string name="font_arial">Arial</string>
+    <string name="font_family_light">sans-serif-light</string>
+    <string name="font_family_medium">sans-serif-medium</string>
+    <string name="font_family_regular">sans-serif</string>
+    <string name="font_family_condensed">sans-serif-condensed</string>
+    <string name="font_family_black">sans-serif-black</string>
+    <string name="font_family_thin">sans-serif-thin</string>
+
 </resources>
