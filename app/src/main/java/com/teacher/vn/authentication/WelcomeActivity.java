@@ -31,16 +31,29 @@ public class WelcomeActivity extends AppCompatActivity {
 
         mapping();
         sliderAdapter = new SliderAdapter(this);
-
-
         mMsgSelectionPager.setAdapter(sliderAdapter);
         tabLayout.setupWithViewPager(mMsgSelectionPager, true);
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(WelcomeActivity.this,SigninActivity.class));
+            }
+        });
+        btnSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(WelcomeActivity.this,SignupActivity.class));
+            }
+        });
 
     }
 
     public void mapping(){
         mMsgSelectionPager = (WrapContentViewPager) findViewById(R.id.slideViewPaper);
         tabLayout = (TabLayout) findViewById(R.id.dotsLayout);
+        btnLogin = (Button) findViewById(R.id.btnLogin);
+        btnSignup =(Button) findViewById(R.id.btnSignup);
     }
 
     WrapContentViewPager.OnPageChangeListener viewListener = new WrapContentViewPager.OnPageChangeListener() {
