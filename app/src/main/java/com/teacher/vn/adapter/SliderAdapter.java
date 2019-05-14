@@ -22,9 +22,9 @@ public class SliderAdapter extends PagerAdapter {
 
     //Array
     public int[] slider_images ={
-            R.drawable.ic_launcher_foreground,
-            R.drawable.ic_launcher_foreground,
-            R.drawable.ic_launcher_foreground
+            R.drawable.slide1,
+            R.drawable.slide2,
+            R.drawable.slide3
     };
     public String[] slide_heading = {
             "Tìm kiếm gia sư nhanh chóng",
@@ -32,7 +32,8 @@ public class SliderAdapter extends PagerAdapter {
             "Liên hệ trực tiếp"
     };
     public String[] slide_desc ={
-            "Ứng dụng tìm kiếm gia sư trực tiếp không cần phải thông qua bất cứ trung gian nào",
+            "Ứng dụng tìm kiếm gia sư không cần phải thông qua bất cứ trung gian nào",
+//            "Có nhiều gia sư chất lượng cho bạn lựa chọn",
             "Có nhiều gia sư chất lượng cho bạn lựa chọn",
             "Liên hệ bằng cách gọi điện cho gia sư bạn đã chọn"
 
