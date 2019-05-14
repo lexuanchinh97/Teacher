@@ -19,6 +19,7 @@ import retrofit2.Response;
 
 public class SignupActivity extends AppCompatActivity {
     EditText edt_username,edt_phone,edt_email,edt_password,edt_address;
+    String userName, phone, email, password, address;
     Button btn_sign_up;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +35,46 @@ public class SignupActivity extends AppCompatActivity {
         btn_sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                callApi(edt_username.getText().toString(),edt_password.getText().toString(),
-                        edt_phone.getText().toString(),edt_email.getText().toString(),edt_address.getText().toString());
+                userName = edt_username.getText().toString();
+                phone = edt_phone.getText().toString();
+                password = edt_password.getText().toString();
+                address = edt_address.getText().toString();
+                email = edt_email.getText().toString();
+
+                if (!isNullOrEmpty(userName) && userName.length() > 6) {
+                    if (!isNullOrEmpty(phone)) {
+                        if (!isNullOrEmpty(email) && isValid(email)) {
+                            if (!isNullOrEmpty(address)) {
+                                if (!isNullOrEmpty(password)) {
+                                    callApi(userName, password, phone, email, address);
+                                } else {
+                                    Toast.makeText(SignupActivity.this, "Password không hợp lệ!", Toast.LENGTH_SHORT).show();
+                                }
+                            } else {
+                                Toast.makeText(SignupActivity.this, "Address không hợp lệ!", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(SignupActivity.this, "Email không hợp lệ!", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(SignupActivity.this, "Phone không hợp lệ!", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(SignupActivity.this, "Username không hợp lệ!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+    }
+
+    private static boolean isValid(String email) {
+        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        return email.matches(regex);
+    }
+
+    private static boolean isNullOrEmpty(String str) {
+        if(str != null && !str.isEmpty())
+            return false;
+        return true;
     }
 
     private void callApi(String username, String password, String phone, String email,String address) {
