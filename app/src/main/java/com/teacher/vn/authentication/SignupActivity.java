@@ -91,6 +91,8 @@ public class SignupActivity extends AppCompatActivity {
                    if(response.body().getStatus()==200){
                        Toast.makeText(SignupActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
                        startActivity(new Intent(SignupActivity.this,SigninActivity.class));
+                   }else{
+                       Toast.makeText(SignupActivity.this,response.body().getMessage(), Toast.LENGTH_SHORT).show();
                    }
 
                 }
