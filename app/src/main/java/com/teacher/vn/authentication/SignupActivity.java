@@ -41,11 +41,11 @@ public class SignupActivity extends AppCompatActivity {
                 address = edt_address.getText().toString();
                 email = edt_email.getText().toString();
 
-                if (!isNullOrEmpty(userName) && userName.length() > 6) {
-                    if (!isNullOrEmpty(phone)) {
+                if (!isNullOrEmpty(userName) && userName.length() > 5) {
+                    if (!isNullOrEmpty(phone) && isNumeric(phone) && phone.length() == 10) {
                         if (!isNullOrEmpty(email) && isValid(email)) {
                             if (!isNullOrEmpty(address)) {
-                                if (!isNullOrEmpty(password)) {
+                                if (!isNullOrEmpty(password) && password.length() > 5) {
                                     callApi(userName, password, phone, email, address);
                                 } else {
                                     Toast.makeText(SignupActivity.this, "Password không hợp lệ!", Toast.LENGTH_SHORT).show();
@@ -64,6 +64,15 @@ public class SignupActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private static boolean isNumeric(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch(NumberFormatException e){
+            return false;
+        }
     }
 
     private static boolean isValid(String email) {
