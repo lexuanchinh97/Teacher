@@ -18,8 +18,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SignupActivity extends AppCompatActivity {
-    EditText edt_username,edt_phone,edt_email,edt_password,edt_address;
-    String userName, phone, email, password, address;
+    EditText edt_username,edt_phone,edt_email,edt_password,edt_address,edt_confirmpassword;
+    String userName, phone, email, password, address,confirmPassword;
     Button btn_sign_up;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,7 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
         edt_username=findViewById(R.id.edt_username);
         edt_password=findViewById(R.id.edt_password);
+        edt_confirmpassword=findViewById(R.id.edt_confirmpassword);
         edt_email=findViewById(R.id.edt_email);
         edt_phone=findViewById(R.id.edt_phone);
         edt_address=findViewById(R.id.edt_address);
@@ -40,12 +41,13 @@ public class SignupActivity extends AppCompatActivity {
                 password = edt_password.getText().toString();
                 address = edt_address.getText().toString();
                 email = edt_email.getText().toString();
+                confirmPassword=edt_confirmpassword.getText().toString();
 
                 if (!isNullOrEmpty(userName) && userName.length() > 5) {
                     if (!isNullOrEmpty(phone) && isNumeric(phone) && phone.length() == 10) {
                         if (!isNullOrEmpty(email) && isValid(email)) {
                             if (!isNullOrEmpty(address)) {
-                                if (!isNullOrEmpty(password) && password.length() > 5) {
+                                if (!isNullOrEmpty(password) && password.length() > 5 && confirmPassword.equals(password)) {
                                     callApi(userName, password, phone, email, address);
                                 } else {
                                     Toast.makeText(SignupActivity.this, "Password không hợp lệ!", Toast.LENGTH_SHORT).show();
@@ -97,12 +99,12 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                 if(response.body()!=null){
-                   if(response.body().getStatus()==200){
-                       Toast.makeText(SignupActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
-                       startActivity(new Intent(SignupActivity.this,SigninActivity.class));
-                   }else{
-                       Toast.makeText(SignupActivity.this,response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                   }
+                    if(response.body().getStatus()==200){
+                        Toast.makeText(SignupActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(SignupActivity.this,SigninActivity.class));
+                    }else{
+                        Toast.makeText(SignupActivity.this,response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
 
                 }
             }
