@@ -12,6 +12,7 @@ import com.teacher.vn.R;
 import com.teacher.vn.config.CallApi;
 import com.teacher.vn.model.BaseResponse;
 import com.teacher.vn.model.Customer;
+import com.teacher.vn.utils.CheckInternet;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,34 +37,39 @@ public class SignupActivity extends AppCompatActivity {
         btn_sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userName = edt_username.getText().toString();
-                phone = edt_phone.getText().toString();
-                password = edt_password.getText().toString();
-                address = edt_address.getText().toString();
-                email = edt_email.getText().toString();
-                confirmPassword=edt_confirmpassword.getText().toString();
+                if (CheckInternet.isNetworkAvailable(SignupActivity.this)) {
+                    userName = edt_username.getText().toString();
+                    phone = edt_phone.getText().toString();
+                    password = edt_password.getText().toString();
+                    address = edt_address.getText().toString();
+                    email = edt_email.getText().toString();
+                    confirmPassword=edt_confirmpassword.getText().toString();
 
-                if (!isNullOrEmpty(userName) && userName.length() > 5) {
-                    if (!isNullOrEmpty(phone) && isNumeric(phone) && phone.length() == 10) {
-                        if (!isNullOrEmpty(email) && isValid(email)) {
-                            if (!isNullOrEmpty(address)) {
-                                if (!isNullOrEmpty(password) && password.length() > 5 && confirmPassword.equals(password)) {
-                                    callApi(userName, password, phone, email, address);
+                    if (!isNullOrEmpty(userName) && userName.length() > 5) {
+                        if (!isNullOrEmpty(phone) && isNumeric(phone) && phone.length() == 10) {
+                            if (!isNullOrEmpty(email) && isValid(email)) {
+                                if (!isNullOrEmpty(address)) {
+                                    if (!isNullOrEmpty(password) && password.length() > 5 && confirmPassword.equals(password)) {
+                                        callApi(userName, password, phone, email, address);
+                                    } else {
+                                        Toast.makeText(SignupActivity.this, "Password không hợp lệ!", Toast.LENGTH_SHORT).show();
+                                    }
                                 } else {
-                                    Toast.makeText(SignupActivity.this, "Password không hợp lệ!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(SignupActivity.this, "Address không hợp lệ!", Toast.LENGTH_SHORT).show();
                                 }
                             } else {
-                                Toast.makeText(SignupActivity.this, "Address không hợp lệ!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignupActivity.this, "Email không hợp lệ!", Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            Toast.makeText(SignupActivity.this, "Email không hợp lệ!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignupActivity.this, "Phone không hợp lệ!", Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Toast.makeText(SignupActivity.this, "Phone không hợp lệ!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignupActivity.this, "Username không hợp lệ!", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(SignupActivity.this, "Username không hợp lệ!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupActivity.this, "Vui lòng kiểm tra mạng!", Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
     }

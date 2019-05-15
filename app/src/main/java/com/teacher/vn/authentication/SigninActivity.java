@@ -15,7 +15,9 @@ import com.teacher.vn.R;
 import com.teacher.vn.config.CallApi;
 import com.teacher.vn.model.ResponseSignin;
 import com.teacher.vn.model.SigninCustomer;
+import com.teacher.vn.utils.CheckInternet;
 
+import okhttp3.internal.Util;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -42,7 +44,11 @@ public class SigninActivity extends AppCompatActivity {
         btn_sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                callApi(edt_username.getText().toString(),edt_password.getText().toString());
+                if (CheckInternet.isNetworkAvailable(SigninActivity.this)) {
+                    callApi(edt_username.getText().toString(), edt_password.getText().toString());
+                } else {
+                    Toast.makeText(SigninActivity.this, "Vui lòng kiểm tra mạng!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
