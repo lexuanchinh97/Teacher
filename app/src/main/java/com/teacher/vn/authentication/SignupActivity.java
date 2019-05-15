@@ -1,6 +1,7 @@
 package com.teacher.vn.authentication;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +26,7 @@ public class SignupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         edt_username=findViewById(R.id.edt_username);
         edt_password=findViewById(R.id.edt_password);
         edt_confirmpassword=findViewById(R.id.edt_confirmpassword);
