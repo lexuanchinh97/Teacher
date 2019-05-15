@@ -174,7 +174,7 @@
         android:drawableStart="@drawable/ic_google"
         android:paddingEnd="16dp"
         android:paddingStart="16dp"
-        android:text="Đăng nhập với oogle"
+        android:text="Đăng nhập với google"
         android:textColor="#B721FF"
         android:textSize="12sp"
         android:textStyle="bold"
