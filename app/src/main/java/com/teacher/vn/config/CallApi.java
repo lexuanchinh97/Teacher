@@ -9,8 +9,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class CallApi {
     public static LinkApi instance=null;
     //  public static String BASE_URL = "http://192.168.1.169:8080/api/";
-    // public static String BASE_URL = "http://192.168.200.2:8080/service/api/";
-    public static String BASE_URL = "https://apieteacher.herokuapp.com/api/";
+    public static String BASE_URL = "http://teacher.us-east-1.elasticbeanstalk.com/api/";
+   // public static String BASE_URL = "https://apieteacher.herokuapp.com/api/";
     public static LinkApi getInstance() {
         if (instance == null) {
             synchronized (CallApi.class) {
